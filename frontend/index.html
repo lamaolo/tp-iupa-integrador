@@ -12,21 +12,41 @@
   <div class="container">
     <h1>Página de tareas</h1>
 
-  <div class="field">
-    <label class="label">Usuario</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="Text input">
-    </div>
-  </div>
+    <div class="panel panel-default" id="form-login">
+      <div class="panel-heading">Login</div>
+      <div class="panel-body">
+        <form id="createUserForm">
+          <div class="form-group">
+        <div class="field">
+          <label class="label">Usuario</label>
+          <div class="control">
+            <input class="input" type="text" id="username" placeholder="Nombre de usuario">
+          </div>
+        </div>
 
-  <div class="field">
-    <label class="label">Contraseña</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="Text input">
-    </div>
-  </div>
-        
+        <div class="field">
+          <label class="label">Contraseña</label>
+          <div class="control">
+            <input class="input" type="text" id="password" placeholder="Contraseña">
+          </div>
+        </div>
+        <button class="button is-success" input class="button"  onclick="login()" type="submit" value="Iniciar sesión"> Iniciar sesión </button>
 
+        <button class="button is-danger" input class="button" onclick="logout()" type="submit" value="Cerar sesión"> Cerrar sesión </button>
+              
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input class="input" type="text" id="name" placeholder="Nombre">
+          </div>
+        </div>
+      
+        <div class="field">
+        <label class="label">Apellido</label>
+        <div class="control">
+          <input class="input" type="text" id="surname" placeholder="Apellido">
+        </div>
+      </div>
       
 </body>
 </html>

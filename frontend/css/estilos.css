@@ -1,15 +1,14 @@
-.container
-
-{
+.container{
     width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
 .label {
+    width: fit-content;
     display: flex;
 }
 
 .input {
-    max-width: 70%;
+    max-width: 50%;
 }
 
