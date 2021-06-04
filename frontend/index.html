@@ -9,45 +9,53 @@
     <title>Document</title>
 </head>
 <body> 
-  <section>
-    <div class="container">
-        <div class="panel" id="form-login">
-          <div class="panel-heading">Ingreso</div>
-          <div class="panel-body">
-            <form id="createUserForm">
-              <div class="form-group">
-            <div class="field">
-              <label class="label">Usuario</label>
-              <div class="control">
-                <input class="input" type="text" id="username" placeholder="Nombre de usuario">
-              </div>
-            </div>
-    
-            <div class="field">
-              <label class="label">Contraseña</label>
-              <div class="control">
-                <input class="input" type="text" id="password" placeholder="Contraseña">
-              </div>
-            </div>
-            <button class="button is-success" input class="button"  onclick="login()" type="submit" value="Iniciar sesión"> Iniciar sesión </button>
-    
-            <button class="button is-danger" input class="button" onclick="logout()" type="submit" value="Cerar sesión"> Cerrar sesión </button>
-                  
-            <div class="is-hidden">
-              <label class="label">Nombre</label>
-              <div class="control">
-                <input class="input" type="text" id="name" placeholder="Nombre">
-              </div>
-            </div>
-          
-            <div class="is-hidden">
-            <label class="label">Apellido</label>
-            <div class="control">
-              <input class="input" type="text" id="surname" placeholder="Apellido">
-            </div>
-          </div> 
-    </div>   
-  </section>
+  <section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-black">Lista de tareas</h3>
+                <hr class="login-hr">
+                <p class="subtitle has-text-black">Inicie sesión para poder acceder a su lista</p>
+                <div class="box">
+                    <form id="login">
+                        <div class="field" id="username">
+                            <div class="control">
+                                <input class="input is-large is-fullheight" type="text" placeholder="Usuario" autofocus="">
+                            </div>
+                        </div>
+
+                        <div class="field" id="password">
+                            <div class="control">
+                                <input class="input is-large is-fullheight" type="password" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <button class="button is-success" input class="button"  onclick="login()" type="submit" value="Iniciar sesión"> Iniciar sesión </button>
+  
+                        <button class="button is-danger" id="logOut" input class="button" onclick="logout()" type="submit" value="Cerar sesión"> Cerrar sesión </button>   
+                    </form>
+                    <div class="box" id="list">
+                      <ul>
+                        <li>Organize office
+                      </li>
+                      <li>Go to the gym
+                      </li>
+                      <li>Buy groceries
+                      </li>
+                      <li>Pay bills
+                      </li>
+                      </ul>
+                    </div>  
+                 </div>
+           </div>
+        </div>
+     </div>
+</section>
+  
    
 </body>
 </html>
+
+
+
+
+                
