@@ -2,11 +2,16 @@
 
 ## Endpoints:
 
+## Scripts:
+
+- ### `npm run dev`: Inicia proyecto en modo de desarrollo.
+- ### `npm run start`: Inicia proyecto en modo de produccion.
+
 ### Usuarios:
 
-- ## `POST` /api/usuarios/login
+- ### `POST` /api/usuarios/register
 
-  - `{ "nombre": "", "apellido": "", "email": "", "password": "", }`
+  - `{ "nombre": "", "apellido": "", "email": "", "password": "" }`
 
-- ## `POST` /api/usuarios/register
-  - `{ "email": "", "password": "", }`
+- ### `POST` /api/usuarios/login
+  - `{ "email": "", "password": "" }`
