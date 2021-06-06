@@ -17,6 +17,17 @@ usuariosRouter.post("/register", (req, res) => {
       res.status(500).json({ error: error.message, data: null })
     );
 });
+
+usuariosRouter.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  controller
+    .login({ email, password })
+    .then((data) => res.status(201).json({ error: null, data }))
+    .catch((error) =>
+      res.status(500).json({ error: error.message, data: null })
+    );
+});
 /* ENDPOINTS DE usuariosRouter AQUI */
 
 usuariosAPI.use("/usuarios", usuariosRouter);
