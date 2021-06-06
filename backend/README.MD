@@ -4,9 +4,9 @@
 
 ### Usuarios:
 
-- ## `POST` /api/usuarios/login
+- ### `POST` /api/usuarios/register
 
   - `{ "nombre": "", "apellido": "", "email": "", "password": "", }`
 
-- ## `POST` /api/usuarios/register
+- ### `POST` /api/usuarios/login
   - `{ "email": "", "password": "", }`
