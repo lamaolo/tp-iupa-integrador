@@ -30,28 +30,15 @@ body {
 }
 
 
-
-
-
-.input[type="checkbox"] {
-    position:absolute; /* Also removes element from document flow */
-    left: 0%;/* Place at the left of its containing element */
+.rows{
+    display: flex;
+    flex-direction: column;
 }
 
 
 .ul {
-    position: relative; /*
-       This magic line seems to do nothing, but
-       for `absolute`ly positioned elements,
-       the containing element is the nearest parent
-       whose position is not `static`.
- 
-       The left of the <li> doesn't work (see purple border)
-       so naturally the <ol> gets the position: relative;
-       since it contains some space before the li::marker
-    */
-    
-    padding-left: 3em; /* Hardcoded space */
+    position: relative; 
+    padding-left: 3em;
     border-left: 2px;
 }
  

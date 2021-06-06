@@ -3,10 +3,10 @@ const loginUser = document.getElementById('username');
 const writePass = document.getElementById('password');
 const lOut = document.getElementsById('logOut');
 
-//Inicio de sesión
-//function isLoggedIn() {
- //return Boolean(localStorage.getItem('token'));
-//}
+// Determina si el usuario está conectado
+function isLoggedIn() {
+ return Boolean(localStorage.getItem('token'));
+}
   
   function updateLoginStatus() {
     if (isLoggedIn()) {
@@ -20,28 +20,32 @@ const lOut = document.getElementsById('logOut');
     }
   }
   
-  //function logout() {
-    //localStorage.clear();
-   // updateLoginStatus();
-  //}
+
+  // Funcion para desconectarse
+  function logout() {
+    localStorage.clear();
+   updateLoginStatus();
+  }
   
-  //async function login() {
-    //const username = loginUser.value;
-    //const password = loginPassword.value;
+
+  //Funcion para conectarse
+  async function login() {
+    const username = loginUser.value;
+    const password = loginPassword.value;
   
-    //const response = await api('post', '/login', { username, password });
+    const response = await api('post', '/login', { username, password });
   
-    //if (response.status === 'error') {
-   //   alert(response.error);
-   // } else {
+    if (response.status === 'error') {
+      alert(response.error);
+    } else {
       // Guardo el Token en mi sesion actual
-     // localStorage.setItem('token', response.accessToken);
+    localStorage.setItem('token', response.accessToken);
   
-    //  updateLoginStatus();
+      updateLoginStatus();
   
-      // Cargo datos del sitio
-    //  loadTable();
-   // }
- // }
+      // Se cargan los datos de la lista
+      loadTable();
+    }
+  }
   
-  // updateLoginStatus();
+  updateLoginStatus();

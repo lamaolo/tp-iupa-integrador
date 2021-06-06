@@ -18,40 +18,53 @@
                 <p class="subtitle has-text-black">Inicie sesión para poder acceder a su lista</p>
                 <div class="box">
                     <form id="login">
-                        <div class="field" id="username">
+                        <div class="field" id="inputName">
+                            <div class="control">
+                                <input class="input is-large is-fullheight" type="text" placeholder="Nombre" autofocus="">
+                            </div>
+                            <span id="inputNameHelp" class="help-block hidden"></span>
+                        </div>
+                        <div class="field" id="inputSurname">
+                            <div class="control">
+                                <input class="input is-large is-fullheight" type="text" placeholder="Apellido" autofocus="">
+                            </div>
+                            <span id="inputSurnameHelp" class="help-block hidden"></span>
+                        </div>
+
+                        <div class="field" id="inputUsername">
                             <div class="control">
                                 <input class="input is-large is-fullheight" type="text" placeholder="Usuario" autofocus="">
                             </div>
+                            <span id="inputUsernameHelp" class="help-block hidden"></span>
                         </div>
 
-                        <div class="field" id="password">
+                        <div class="field" id="inputPassword">
                             <div class="control">
                                 <input class="input is-large is-fullheight" type="password" placeholder="Contraseña">
                             </div>
                         </div>
                         <button class="button is-success" input class="button"  onclick="login()" type="submit" value="Iniciar sesión"> Iniciar sesión </button>
   
-                        <button class="button is-danger" id="logOut" input class="button" onclick="logout()" type="submit" value="Cerar sesión"> Cerrar sesión </button>   
+                        <button class="button is-danger" id="logOut" input class="button" onclick="logout()" type="submit" value="Cerar sesión"> Cerrar sesión </button> 
+                        
+                        <button class="button is-info" id="createUser" onclick="createUser()" input class="button" onclick="createUser()" type="submit" value="Crear usuario"> Crear usuario </button>
                     </form>
                     <div class="box" id="list">
-                      <ul>
-                        <li>Organize office
-                      </li>
-                      <li>Go to the gym
-                      </li>
-                      <li>Buy groceries
-                      </li>
-                      <li>Pay bills
-                      </li>
-                      </ul>
+                        <template id="contentRow">
+                            <div class='rows'>
+                            <div class="col-xs-6 txtName">Nombre</div>
+                            <div class="col-xs-2 txtSurname">Apellido</div>
+                            <div class="col-xs-4 text-right">
+                            <div class='row is-full'> Rows </div>
+                            <div class='row is-full'> Row one </div>
+                          </div>
+                          </template>
                     </div>  
                  </div>
            </div>
         </div>
      </div>
 </section>
-  
-   
 </body>
 </html>
 
