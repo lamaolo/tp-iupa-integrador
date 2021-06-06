@@ -23,7 +23,7 @@ usuariosRouter.post("/login", (req, res) => {
 
   controller
     .login({ email, password })
-    .then((data) => res.status(201).json({ error: null, data }))
+    .then((token) => res.status(201).json({ error: null, data: token }))
     .catch((error) =>
       res.status(500).json({ error: error.message, data: null })
     );
