@@ -1,17 +1,16 @@
 # Backend Proyecto Integrador.
 
-## Endpoints:
-
 ## Scripts:
 
-- ### `npm run dev`: Inicia proyecto en modo de desarrollo.
-- ### `npm run start`: Inicia proyecto en modo de produccion.
+- `npm run dev`: Inicia proyecto en modo de desarrollo.
+- `npm run start`: Inicia proyecto en modo de produccion.
 
-### Usuarios:
+## Endpoints:
 
-- ### `POST` /api/usuarios/register
+#### Usuarios:
 
+- `POST` /api/usuarios/register
   - `{ "nombre": "", "apellido": "", "email": "", "password": "" }`
 
-- ### `POST` /api/usuarios/login
+- `POST` /api/usuarios/login
   - `{ "email": "", "password": "" }`
