@@ -1,3 +1,5 @@
+const db = require("../database");
+
 /* Metodo para listar los usuarios */
 const list = () => {
   return new Promise((resolve, reject) => {
@@ -22,8 +24,22 @@ const list = () => {
 };
 
 /* Metodo para crear un usuario */
-const create = () => {};
+const create = ({ nombre, apellido, email, password }) => {
+  if (!email || !password || !nombre || !apellido) {
+    return Promise.reject({
+      message:
+        "Los campos `nombre`, `apellido`, `email` y `password` son obligatorios.",
+    });
+  }
+
+  return new Promise((resolve, reject) => {
+    db.registerUser({ nombre, apellido, email, password })
+      .then(([usuarioCreado]) => resolve(usuarioCreado))
+      .catch((error) => reject(error));
+  });
+};
 
 module.exports = {
   list,
+  create,
 };

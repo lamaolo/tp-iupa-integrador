@@ -4,7 +4,7 @@ const controller = require("./controller");
 
 /* ENDPOINTS DE tareasRouter AQUI */
 
-// -> localhost:3000/api/usuarios
+// -> localhost:3000/api/tareas
 tareasRouter.get("/", (req, res) => {
   controller
     .list()

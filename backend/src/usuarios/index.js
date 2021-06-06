@@ -3,10 +3,16 @@ const usuariosAPI = require("express").Router();
 const controller = require("./controller");
 
 /* ENDPOINTS DE usuariosRouter AQUI */
-usuariosRouter.get("/", (req, res) => {
+
+// -> localhost:3000/api/usuarios
+usuariosRouter.post("/register", (req, res) => {
+  const { nombre, apellido, email, password } = req.body;
+
   controller
-    .list()
-    .then((usuarios) => res.status(200).json({ error: null, data: usuarios }))
+    .create({ nombre, apellido, email, password })
+    .then((usuarioCreado) =>
+      res.status(201).json({ error: null, data: usuarioCreado })
+    )
     .catch((error) =>
       res.status(500).json({ error: error.message, data: null })
     );
