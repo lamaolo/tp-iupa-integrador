@@ -14,42 +14,45 @@
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
                 <h3 class="title has-text-black">Lista de tareas</h3>
-                <hr class="login-hr">
                 <p class="subtitle has-text-black">Inicie sesión para poder acceder a su lista</p>
                 <div class="box">
                     <form id="login">
                         <div class="field" id="inputName">
                             <div class="control">
-                                <input class="input is-large is-fullheight" type="text" placeholder="Nombre" autofocus="">
+                                <input class="input is-large is-fullheight" type="text" id="name" placeholder="Nombre" autofocus="">
                             </div>
                             <span id="inputNameHelp" class="help-block hidden"></span>
                         </div>
                         <div class="field" id="inputSurname">
                             <div class="control">
-                                <input class="input is-large is-fullheight" type="text" placeholder="Apellido" autofocus="">
+                                <input class="input is-large is-fullheight" type="text" id="surname" placeholder="Apellido" autofocus="">
                             </div>
                             <span id="inputSurnameHelp" class="help-block hidden"></span>
                         </div>
 
+
+
                         <div class="field" id="inputUsername">
                             <div class="control">
-                                <input class="input is-large is-fullheight" type="text" placeholder="Usuario" autofocus="">
+                                <input class="input is-large is-fullheight" type="text" id="username" placeholder="Usuario" autofocus="">
                             </div>
                             <span id="inputUsernameHelp" class="help-block hidden"></span>
                         </div>
 
                         <div class="field" id="inputPassword">
                             <div class="control">
-                                <input class="input is-large is-fullheight" type="password" placeholder="Contraseña">
+                                <input class="input is-large is-fullheight" type="password" id="password" placeholder="Contraseña">
                             </div>
                         </div>
                         <button class="button is-success" input class="button"  onclick="login()" type="submit" value="Iniciar sesión"> Iniciar sesión </button>
   
-                        <button class="button is-danger" id="logOut" input class="button" onclick="logout()" type="submit" value="Cerar sesión"> Cerrar sesión </button> 
-                        
-                        <button class="button is-info" id="createUser" onclick="createUser()" input class="button" onclick="createUser()" type="submit" value="Crear usuario"> Crear usuario </button>
+                        <button class="button is-danger" id="logOut" input class="button" onclick="logout()" type="submit" value="Cerrar sesión"> Cerrar sesión </button> 
+                        <div class="box">
+                        <p class="subtitle">¿No está registrado?</p>
+                        <button class="button is-info" input class="button" onclick="createUser()" type="submit" value="Crear usuario"> Crear usuario </button>
+                        </div>
                     </form>
-                    <div class="box" id="list">
+                    <div class="box is-hidden" id="list">
                         <template id="contentRow">
                             <div class='rows'>
                             <div class="col-xs-6 txtName">Nombre</div>
@@ -65,6 +68,8 @@
         </div>
      </div>
 </section>
+<script src="app.js"></script>
+<script src="login.js"></script>
 </body>
 </html>
 
