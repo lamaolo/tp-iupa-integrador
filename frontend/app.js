@@ -22,11 +22,11 @@ const createUserFormContent = document.getElementById('createUser');
 
  
 
- function addRow(id, nombre, apellido, tarea) {
+ function addRow(id, name, task) {
  const row =templateRow.cloneNode(true);
 
   // Modifico el valor del nodo de texto por el ingesado por el usuario
-row.querySelector('.txtTarea').innerText = tarea;
+row.querySelector('.txtTarea').innerText = task;
 row.querySelector('.txtDescription').innerText = description;
 
 
@@ -44,7 +44,7 @@ contentTable.appendChild(row);
   if (localStorage.getItem('token')) {
     contentTable.innerHTML = '';
     const data = await api('get', '/users');
-    data.forEach(({ name, age, id, tasks }) => addRow(name, age, id, tasks));
+    data.forEach(({ name, id, task }) => addRow(name, id, task));
   }
  }
 

@@ -8,7 +8,7 @@ const {
   DB_PASSWORD,
   DB_USER,
   JWT_SECRET,
-} = require("../config");
+} = require("../config.js");
 
 module.exports = {
   connection: null,

@@ -1,8 +1,0 @@
-module.exports = {
-  PORT: 3000,
-  DB_NAME: "tp_integrador",
-  DB_HOST: "localhost",
-  DB_PASSWORD: "",
-  DB_USER: "",
-  JWT_SECRET: ""
-};
