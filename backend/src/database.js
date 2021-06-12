@@ -64,4 +64,21 @@ module.exports = {
       { expiresIn: "35m" }
     );
   },
+  getTareas: function () {
+    if (!this.connection) {
+      throw new Error("Conexion con base de datos no inicializada");
+    }
+
+    return this.connection.execute("SELECT * FROM tareas");
+  },
+  createTarea: function ({ titulo, descripcion, estado, id_usuario }) {
+    if (!this.connection) {
+      throw new Error("Conexion con base de datos no inicializada");
+    }
+
+    return this.connection.execute(
+      "INSERT INTO tareas(titulo, descripcion, estado, fecha_creacion, fecha_actualizacion, id_usuario) VALUES(?, ?, ?, ?, ?, ?)",
+      [titulo, descripcion, estado, new Date(), new Date(), id_usuario]
+    );
+  },
 };
