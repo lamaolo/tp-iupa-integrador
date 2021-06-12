@@ -29,6 +29,21 @@ tareasRouter.post("/", (req, res) => {
     );
 });
 
+// Editar una tarea
+tareasRouter.put("/:id", (req, res) => {
+  const { titulo, descripcion } = req.body;
+  const { id: tarea_id } = req.params;
+
+  controller
+    .edit({ titulo, descripcion, tarea_id })
+    .then((tareaEditada) =>
+      res.status(200).json({ error: null, data: tareaEditada })
+    )
+    .catch((error) =>
+      res.status(500).json({ error: error.message, data: null })
+    );
+});
+
 /* ENDPOINTS DE tareasRouter AQUI */
 
 tareasAPI.use("/tareas", tareasRouter);
