@@ -1,33 +1,52 @@
 
 // Referencia a la lista de tareas
-const list = document.getElementById('list');
+const list = document.getElementById('listaTareas');
 
 // Refiere al template
-const templateRow = document.getElementById('contentRow').content;
 
 
-const inputName = document.getElementById('inputName');
-const inputNameHelp = document.getElementById('inputNameHelp');
-const inputNameFormGroup = inputNameHelp.parentElement;
-const inputSurname = document.getElementById('inputSurname');
-const inputSurnameHelp = document.getElementById('inputSurnameHelp');
-const inputSurnameFormGroup = inputSurnameHelp.parentElement;
-const inputUsername = document.getElementById('inputUsername');
-const inputUsernameHelp = document.getElementById('inputUsernameHelp');
-const inputUsernameFormGroup = inputUsernameHelp.parentElement;
-const createUserFormContent = document.getElementById('createUser');
-
+const nombre = document.getElementById('nombre');
+const inputNombre = document.getElementById('inputNombre');
+const inputNombreHelp = document.getElementById('inputNombreHelp');
+const inputNombreFormGroup = inputNombreHelp.parentElement;
+const apellido = document.getElementById('apellido');
+const inputApellido = document.getElementById('inputApellido');
+const inputApellidoHelp = document.getElementById('inputApellidoHelp');
+const inputApellidoFormGroup = inputApellidoHelp.parentElement;
+const email = document.getElementById('email');
+const inputEmail = document.getElementById('inputEmail');
+const inputEmailHelp = document.getElementById('inputEmailHelp');
+const inputEmailGroup = inputEmailHelp.parentElement;
+const password = document.getElementById('password');
 
  //AGREGAR ROW
 
+
+
+ function showLista(){
+  // get a reference to your element, or it's container
+  const listaTareas = document.getElementById('listaTareas');
+  listaTareas.style.display = '';
+  hideContentRow();
+}
+
+function hideContentRow(){
+  const contentRow = document.getElementById('contentRow');
+  contentRow.style.display = 'none';
+}
+
+
+
  
 
- function addRow(id, name, task) {
+ function addRow(nombre, tarea_Id, tarea, descripcion) {
  const row =templateRow.cloneNode(true);
 
   // Modifico el valor del nodo de texto por el ingesado por el usuario
-row.querySelector('.txtTarea').innerText = task;
-row.querySelector('.txtDescription').innerText = description;
+row.querySelector('.txtName').innerText = nombre;
+row.querySelector('.txtTarea').innerText = tarea;
+row.querySelector('.txtTaskId').innerText = tarea_Id;
+row.querySelector('.txtDescription').innerText = descripcion;
 
 
 row.querySelector('.btnEdit').addEventListener('click', () => updateTask());
@@ -35,16 +54,16 @@ row.querySelector('.btnEdit').addEventListener('click', () => updateTask());
 row.querySelector('.row').dataset.id = id;
 
   // Inserto en el contenido de la tabla
-contentTable.appendChild(row);
+list.appendChild(row);
 }
 
 
 // Cargar datos de la tabla
  async function loadTable() {
   if (localStorage.getItem('token')) {
-    contentTable.innerHTML = '';
+    list.innerHTML = '';
     const data = await api('get', '/users');
-    data.forEach(({ name, id, task }) => addRow(name, id, task));
+    data.forEach(({ nombre, tarea, tarea_Id, descripcion }) => addRow(nombre, tarea, tarea_Id, descripcion));
   }
  }
 

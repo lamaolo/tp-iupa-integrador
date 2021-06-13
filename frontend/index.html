@@ -60,6 +60,33 @@
                         </div>
                     </form>
                  </div>
+
+                 <nav class="panel" id="listaTareas" style="display: none;">
+                 <p class="panel">
+                   Lista de tareas
+                 </p>
+                 <div class="panel-block">
+                   <p class="control has-icons-left">
+                     <input class="input" type="text" placeholder="Search">
+                     <span class="icon is-left">
+                       <i class="fas fa-search" aria-hidden="true"></i>
+                     </span>
+                   </p>
+                 </div>
+                </nav>
+
+                 <template id="contentRow">
+                    <div class="row">
+                      <div class="col-xs-6 txtName">Nombre </div>
+                      <div class="col-xs-2 txtTaskId">Id </div>
+                      <div class="col-xs-2 txtTask">Tarea </div>
+                      <div class="col-xs-6 txtDescription">Descripción </div>
+                      <div class="col-xs-4 text-right">
+                        <button class="btn btn-primary btnEdit">Editar</button>
+                        <button class="btn btn-danger btnDelete">Eliminar</button>
+                      </div>
+                    </div>
+                  </template>
            </div>
         </div>
      </div>
