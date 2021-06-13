@@ -16,9 +16,7 @@ const verifyJWT = (req, res, next) => {
       try {
         const verifyToken = jwt.verify(token, JWT_SECRET);
 
-        console.log("VERIFY TOKEN: ", verifyToken);
-
-        // escribo el resultado del token en el objeto request
+        // escribo el resultado del token decodificado en el objeto request
         req.user = verifyToken;
         next();
       } catch (error) {

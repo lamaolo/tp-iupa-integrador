@@ -18,10 +18,10 @@
 
 #### Tareas:
 
-- `GET /api/tareas` - Lista todas las tareas.
+Estos endpoints detectan el ID del usuario que esta realizando la petición a través del JWT enviado y devuelve o inserta las tareas correspondientes a ese usuario.
 
-- `POST /api/tareas` - Crea una nueva tarea asociada a un usuario.
+- `GET /api/tareas` - Lista todas las tareas del usuario que envíe la petición.
 
-  - `{ "titulo": "", "descripcion": "", "id_usuario": "" }`
+- `POST /api/tareas` - Crea una nueva tarea asociada al usuario que envíe la petición.
 
--
+  - `{ "titulo": "", "descripcion": "" }`

@@ -1,9 +1,13 @@
 const db = require("../database");
 
 /* Metodo para listar las tareas */
-const list = () => {
+const list = (userId) => {
+  if (!userId) {
+    return Promise.reject({ message: "El campo `userId` es obligatorio." });
+  }
+
   return new Promise((resolve, reject) => {
-    db.getTareas()
+    db.getTareas(userId)
       .then(([tareas]) => resolve(tareas))
       .catch((error) => reject(error));
   });

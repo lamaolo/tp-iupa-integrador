@@ -64,12 +64,15 @@ module.exports = {
       { expiresIn: "35m" }
     );
   },
-  getTareas: function () {
+  getTareas: function (userId) {
     if (!this.connection) {
       throw new Error("Conexion con base de datos no inicializada");
     }
 
-    return this.connection.execute("SELECT * FROM tareas");
+    return this.connection.execute(
+      "SELECT * FROM tareas WHERE id_usuario = ?",
+      [userId]
+    );
   },
   createTarea: function ({ titulo, descripcion, estado, id_usuario }) {
     if (!this.connection) {

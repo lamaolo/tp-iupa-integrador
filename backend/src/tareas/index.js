@@ -7,8 +7,9 @@ const controller = require("./controller");
 // -> localhost:3000/api/tareas
 // Obtener todas las tareas
 tareasRouter.get("/", (req, res) => {
+  // req.user contiene todos los datos del JWT decodificados.
   controller
-    .list()
+    .list(req.user.id) // user.id extraido del JWT
     .then((tareas) => res.status(200).json({ error: null, data: tareas }))
     .catch((error) =>
       res.status(500).json({ error: error.message, data: null })
@@ -17,10 +18,15 @@ tareasRouter.get("/", (req, res) => {
 
 // Crear una tarea
 tareasRouter.post("/", (req, res) => {
-  const { titulo, descripcion, id_usuario } = req.body;
+  const { titulo, descripcion } = req.body;
 
   controller
-    .create({ titulo, descripcion, estado: "pendiente", id_usuario })
+    .create({
+      titulo,
+      descripcion,
+      estado: "pendiente",
+      id_usuario: req.user.id, // se creara la tarea asociada al usuario que este logueado (el que mande el JWT)
+    })
     .then((tareaCreada) =>
       res.status(201).json({ error: null, data: tareaCreada })
     )
