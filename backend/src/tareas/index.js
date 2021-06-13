@@ -1,12 +1,13 @@
 const tareasRouter = require("express").Router();
 const tareasAPI = require("express").Router();
 const controller = require("./controller");
+const verifyToken = require("../middleware/verifyJWT");
 
 /* ENDPOINTS DE tareasRouter AQUI */
 
 // -> localhost:3000/api/tareas
 // Obtener todas las tareas
-tareasRouter.get("/", (req, res) => {
+tareasRouter.get("/", verifyToken, (req, res) => {
   // req.user contiene todos los datos del JWT decodificados.
   controller
     .list(req.user.id) // user.id extraido del JWT
@@ -17,7 +18,7 @@ tareasRouter.get("/", (req, res) => {
 });
 
 // Crear una tarea
-tareasRouter.post("/", (req, res) => {
+tareasRouter.post("/", verifyToken, (req, res) => {
   const { titulo, descripcion } = req.body;
 
   controller
@@ -36,7 +37,7 @@ tareasRouter.post("/", (req, res) => {
 });
 
 // Editar una tarea
-tareasRouter.put("/:id", (req, res) => {
+tareasRouter.put("/:id", verifyToken, (req, res) => {
   const { titulo, descripcion } = req.body;
   const { id: tarea_id } = req.params;
 

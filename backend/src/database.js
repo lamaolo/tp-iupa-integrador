@@ -61,7 +61,7 @@ module.exports = {
         email: userInDB.email,
       },
       JWT_SECRET,
-      { expiresIn: "35m" }
+      { expiresIn: "1h" }
     );
   },
   getTareas: function (userId) {
