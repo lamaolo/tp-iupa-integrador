@@ -16,7 +16,7 @@
                 <h3 class="title has-text-black">Lista de tareas</h3>
                 <p class="subtitle has-text-black">Inicie sesión para poder acceder a su lista</p>
                 <div class="box">
-                    <form id="form">
+                    <form action="#" class="form">
                         <div class="field" id="inputNombre">
                             <div class="control">
                                 <input class="input is-large is-fullheight" 
@@ -48,15 +48,15 @@
                             </div>
                         </div>
                         <button class="button is-success" 
-                        onclick=login() type="submit" value="Iniciar sesión"> Iniciar sesión </button>
+                        onclick=login() type="submit" id="btn_login" value="Iniciar sesión"> Iniciar sesión </button>
   
                         <button class="button is-danger"  
-                        onclick=logout() type="submit" value="Cerrar sesión"> Cerrar sesión </button> 
+                        onclick=logout() type="submit" id="btn_logout" value="Cerrar sesión"> Cerrar sesión </button> 
 
                         <div class="box">
                         <p class="subtitle">¿No está registrado?</p>
                         <button class="button is-info"   
-                        onclick=create() type="submit" value="Crear usuario"> Crear usuario </button>
+                        type="submit" id="btn_register" value="Crear usuario"> Crear usuario </button>
                         </div>
                     </form>
                  </div>

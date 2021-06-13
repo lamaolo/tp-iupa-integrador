@@ -1,11 +1,16 @@
-const form = document.getElementById('form');
-const login = document.getElementById('btn_login');
+
+
+
+const btn_login = document.getElementById('btn_login');
 const nombre = document.getElementById('nombre');
 const apellido = document.getElementById('apellido');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const logout = document.getElementById('btn_logout');
-const createUser = document.getElementById('btn_register');
+const btn_logout = document.getElementById('btn_logout');
+const btn_register = document.getElementById('btn_register');
+
+
+
 
 // Se ejecuta una llamada a la API
 /** *
@@ -41,6 +46,23 @@ async function api(method, endpoint, body = undefined) {
 
 
 
+async function create() {
+  const nombre = nombre.value;
+  const apellido = apellido.value;
+  const email = email.value;
+  const password = password.value;
+
+  const response = await api('post', '/register', { nombre, apellido, email, password });
+
+  if (!email || !password || !nombre || !apellido) {
+    return Promise.reject({
+      message:
+        "Los campos `nombre`, `apellido`, `email` y `password` son obligatorios.",
+    }); 
+  } else {return response.json('Usuario creado!');
+
+  }
+
 
 
 
@@ -53,24 +75,24 @@ function isLoggedIn() {
 function updateLoginStatus() {
   if (isLoggedIn()) {
     // Usuario autenticado
-    formLogin.classList.add('hidden');
-    lOut.classList.remove('hidden');
+    btn_login.classList.add('hidden');
+    btn_logout.classList.remove('hidden');
   } else {
     // Usuario SIN autenticar
-    formLogin.classList.remove('hidden');
-    lOut.classList.add('hidden');
+    btn_login.classList.remove('hidden');
+    btn_logout.classList.add('hidden');
   }
 }
 
 // Funcion para desconectarse
-  function logout() {
+  function btn_logout() {
     localStorage.clear();
    updateLoginStatus();
 }
   
 
 //Funcion para conectarse
-async function formLogin() {
+async function btn_login() {
   const nombre = nombre.value;
   const password = password.value;
 
@@ -89,46 +111,23 @@ async function formLogin() {
     loadTable();
   }
 }
+}
 
-updateLoginStatus();
 
+// If you wanted to check clicks on ALL buttons with the class, remove the [0] at the end.
 
-async function createUser(evento) {
-  evento.preventDefault();
-  try {
-    const datos = {
-      nombre: nombre.value,
-      apellido: apellido.value,
-      email: email.value,
-      password: password.value,
-    };
-    const accion = btn_register.innerHTML;
-    let urlEnvio = url;
-    let method = "POST";
-    if (accion === "Edit") {
-      urlEnvio += `/${indice.value}`;
-      method = "PUT";
-    }
-    const respuesta = await fetch(urlEnvio, {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(datos),
-      mode: "cors",
-    });
-    if (respuesta.ok) {
-      createUser();
-      updateLoginStatus();
-    }
-  } catch (error) {
-    console.log({ error });
-    $(".alert").show();
-  }
+// Check for clicks on the button
+btn_register.onclick = function(e) {
+  alert(e.target.getAttribute("Crear usuario"));
 }
 
 
 
 
-form.onsubmit = createUser;
-create.onclick = createUser;
+//const btn_register = document.getElementById("btn_register");
+//input.addEventListener("keyup", function(event) {
+//  if (event.keyCode === 13) {
+//   event.preventDefault();
+//   document.getElementById("myBtn").click();
+//  }
+//});
