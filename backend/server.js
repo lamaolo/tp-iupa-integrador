@@ -1,14 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { PORT } = require("./config");
 const apiRouter = require("./src");
 const db = require("./src/database");
 const fs = require("fs");
 
 const app = express();
-
-app.use(bodyParser.json());
-app.use(apiRouter);
 
 // autogenerar archivo config.js para modo de produccion
 if (process.env.NODE_ENV === "production") {
@@ -27,13 +23,18 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
+app.use(bodyParser.json());
+app.use(apiRouter);
+
 (async function initApp() {
   try {
     await db.initDB();
     console.log("[DATABASE]: Base de datos conectada.");
 
-    app.listen(PORT, () => {
-      console.log(`[SERVER]: Escuchando en: http://localhost:${PORT}.`);
+    app.listen(process.env.PORT, () => {
+      console.log(
+        `[SERVER]: Escuchando en: http://localhost:${process.env.PORT}.`
+      );
     });
   } catch (error) {
     console.log(error);

@@ -1,5 +1,5 @@
 const apiRouter = require("express").Router();
-const verifyToken = require("../middleware/verifyJWT");
+const verifyToken = require("./middleware/verifyJWT");
 const usuariosAPI = require("./usuarios");
 const tareasAPI = require("./tareas");
 
