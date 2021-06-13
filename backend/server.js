@@ -1,15 +1,12 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const apiRouter = require("./src");
-const db = require("./src/database");
 const fs = require("fs");
 
-const app = express();
-
 // autogenerar archivo config.js para modo de produccion
-if (process.env.NODE_ENV === "production") {
+console.log("NODE_ENV: ", process.env.NODE_ENV);
+if (process.env.NODE_ENV) {
+  console.log("GENERANDO CONFIG.js");
+
   fs.writeFileSync(
-    "./config.js",
+    "config.js",
     `
   module.exports = {
     PORT: 3000,
@@ -22,6 +19,13 @@ if (process.env.NODE_ENV === "production") {
   `
   );
 }
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const apiRouter = require("./src");
+const db = require("./src/database");
+
+const app = express();
 
 app.use(bodyParser.json());
 app.use(apiRouter);
