@@ -3,9 +3,19 @@
 
 const btn_login = document.getElementById('btn_login');
 const nombre = document.getElementById('nombre');
+const inputNombre = document.getElementById('inputNombre');
+const inputNombreHelp = document.getElementById('inputNombreHelp');
+const inputNombreFormGroup = inputNombreHelp.parentElement;
 const apellido = document.getElementById('apellido');
+const inputApellido = document.getElementById('inputApellido');
+const inputApellidoHelp = document.getElementById('inputApellidoHelp');
+const inputApellidoFormGroup = inputApellidoHelp.parentElement;
 const email = document.getElementById('email');
+const inputEmail = document.getElementById('inputEmail');
+const inputEmailHelp = document.getElementById('inputEmailHelp');
+const inputEmailGroup = inputEmailHelp.parentElement;
 const password = document.getElementById('password');
+const inputPassword = document.getElementById('inputPassword');
 const btn_logout = document.getElementById('btn_logout');
 const btn_register = document.getElementById('btn_register');
 
@@ -47,21 +57,24 @@ async function api(method, endpoint, body = undefined) {
 
 
 async function create() {
-  const nombre = nombre.value;
-  const apellido = apellido.value;
-  const email = email.value;
-  const password = password.value;
-
-  const response = await api('post', '/register', { nombre, apellido, email, password });
-
-  if (!email || !password || !nombre || !apellido) {
-    return Promise.reject({
-      message:
-        "Los campos `nombre`, `apellido`, `email` y `password` son obligatorios.",
-    }); 
-  } else {return response.json('Usuario creado!');
-
-  }
+    const nombre = inputNombre.value;
+    const apellido = inputApellido.value;
+    const email = inputEmail.value;
+    const password = inputPassword.value;
+  
+    resetFormErrors();
+  
+    const response = await api('post', '/users', {
+      name,
+      age,
+    });
+  
+    if (response.errors) {
+      updateFormErrors(response.errors);
+    } else {
+      createUserForm.reset();s
+    }
+}
 
 
 
@@ -85,18 +98,19 @@ function updateLoginStatus() {
 }
 
 // Funcion para desconectarse
-  function btn_logout() {
+function logout() {
     localStorage.clear();
+    hideContentRow();
    updateLoginStatus();
 }
   
 
 //Funcion para conectarse
-async function btn_login() {
-  const nombre = nombre.value;
+async function login() {
+  const email = email.value;
   const password = password.value;
 
-  const response = await api('post', '/login', { nombre, password });
+  const response = await api('post', '/login', { email, password });
 
   if (response.status === 'error') {
     alert(response.error);
@@ -109,9 +123,10 @@ async function btn_login() {
 
     // Se cargan los datos de la lista
     loadTable();
+    showLista();
   }
 }
-}
+
 
 
 // If you wanted to check clicks on ALL buttons with the class, remove the [0] at the end.
