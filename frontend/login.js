@@ -121,13 +121,11 @@ btn_register.onclick = function(e) {
   alert(e.target.getAttribute("Crear usuario"));
 }
 
+btn_login.onclick = function(e) {
+  alert(e.target.getAttribute("Iniciar sesión"));
+}
 
+btn_logout.onclick = function(e) {
+  alert(e.target.getAttribute("Iniciar sesión"));
+}
 
-
-//const btn_register = document.getElementById("btn_register");
-//input.addEventListener("keyup", function(event) {
-//  if (event.keyCode === 13) {
-//   event.preventDefault();
-//   document.getElementById("myBtn").click();
-//  }
-//});
