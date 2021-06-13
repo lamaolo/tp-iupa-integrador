@@ -91,18 +91,18 @@ module.exports = {
 
     if (!titulo) {
       return this.connection.execute(
-        "UPDATE tareas SET descripcion = ? WHERE tareas.id = ? && id_usuario = ?",
-        [descripcion, tarea_id, id_usuario]
+        "UPDATE tareas SET descripcion = ?, fecha_actualizacion = ? WHERE tareas.id = ? && id_usuario = ?",
+        [descripcion, new Date(), tarea_id, id_usuario]
       );
     } else if (!descripcion) {
       return this.connection.execute(
-        "UPDATE tareas SET titulo = ? WHERE tareas.id = ? && id_usuario = ?",
-        [titulo, tarea_id, id_usuario]
+        "UPDATE tareas SET titulo = ?, fecha_actualizacion = ? WHERE tareas.id = ? && id_usuario = ?",
+        [titulo, new Date(), tarea_id, id_usuario]
       );
     } else {
       return this.connection.execute(
-        "UPDATE tareas SET titulo = ?, descripcion = ? WHERE tareas.id = ? && id_usuario = ?",
-        [titulo, descripcion, tarea_id, id_usuario]
+        "UPDATE tareas SET titulo = ?, descripcion = ?, fecha_actualizacion = ? WHERE tareas.id = ? && id_usuario = ?",
+        [titulo, descripcion, new Date(), tarea_id, id_usuario]
       );
     }
   },
