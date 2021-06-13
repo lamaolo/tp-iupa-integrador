@@ -84,25 +84,25 @@ module.exports = {
       [titulo, descripcion, estado, new Date(), new Date(), id_usuario]
     );
   },
-  editTarea: function ({ titulo, descripcion, tarea_id }) {
+  editTarea: function ({ titulo, descripcion, tarea_id, id_usuario }) {
     if (!this.connection) {
       throw new Error("Conexion con base de datos no inicializada");
     }
 
     if (!titulo) {
       return this.connection.execute(
-        "UPDATE tareas SET descripcion = ? WHERE tareas.id = ?",
-        [descripcion, tarea_id]
+        "UPDATE tareas SET descripcion = ? WHERE tareas.id = ? && id_usuario = ?",
+        [descripcion, tarea_id, id_usuario]
       );
     } else if (!descripcion) {
       return this.connection.execute(
-        "UPDATE tareas SET titulo = ? WHERE tareas.id = ?",
-        [titulo, tarea_id]
+        "UPDATE tareas SET titulo = ? WHERE tareas.id = ? && id_usuario = ?",
+        [titulo, tarea_id, id_usuario]
       );
     } else {
       return this.connection.execute(
-        "UPDATE tareas SET titulo = ?, descripcion = ? WHERE tareas.id = ?",
-        [titulo, descripcion, tarea_id]
+        "UPDATE tareas SET titulo = ?, descripcion = ? WHERE tareas.id = ? && id_usuario = ?",
+        [titulo, descripcion, tarea_id, id_usuario]
       );
     }
   },

@@ -40,9 +40,10 @@ tareasRouter.post("/", verifyToken, (req, res) => {
 tareasRouter.put("/:id", verifyToken, (req, res) => {
   const { titulo, descripcion } = req.body;
   const { id: tarea_id } = req.params;
+  const { id: id_usuario } = req.user;
 
   controller
-    .edit({ titulo, descripcion, tarea_id })
+    .edit({ titulo, descripcion, tarea_id, id_usuario })
     .then((tareaEditada) =>
       res.status(200).json({ error: null, data: tareaEditada })
     )

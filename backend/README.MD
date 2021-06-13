@@ -25,3 +25,7 @@ Estos endpoints detectan el ID del usuario que esta realizando la petición a tr
 - `POST /api/tareas` - Crea una nueva tarea asociada al usuario que envíe la petición.
 
   - `{ "titulo": "", "descripcion": "" }`
+
+- `PUT /api/tareas/:id` - Edita la tarea con el ID pasado por query, correspondiente al usuario que la creó.
+
+  - `{ "titulo": "", "descripcion": "" }` - Ambos campos son opcionales, pero debe enviarse al menos uno.
