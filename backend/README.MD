@@ -10,6 +10,7 @@
 #### Usuarios:
 
 - `POST /api/usuarios/register` - Registra un nuevo usuario.
+
   - `{ "nombre": "", "apellido": "", "email": "", "password": "" }`
 
 - `POST /api/usuarios/login` - Hace login de un usuario existente.
@@ -20,4 +21,7 @@
 - `GET /api/tareas` - Lista todas las tareas.
 
 - `POST /api/tareas` - Crea una nueva tarea asociada a un usuario.
+
   - `{ "titulo": "", "descripcion": "", "id_usuario": "" }`
+
+-
