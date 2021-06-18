@@ -26,6 +26,9 @@ const password = document.getElementById('password');
  function showLista(){
   // get a reference to your element, or it's container
   const listaTareas = document.getElementById('listaTareas');
+/* api/tareas
+  const listaTareas = document.getElementById('tareas');*/
+  
   listaTareas.style.display = '';
   hideContentRow();
 }
