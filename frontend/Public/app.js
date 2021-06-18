@@ -80,10 +80,44 @@ async function initApp() {
 /* 
  async function createUser() {
   const nombre = inputName.value;
+  const apellido = inputApellido.value;
 
   resetFormErrors();
 
   const response = await api('post', '/users', {
     nombre,
+    apellido,
   });
 */
+
+/** Actualizar usuario - update/users
+ 
+ async function updateUser(id) {
+  editingUserId = id;
+
+  createUserFormContent.style.display = 'none';
+  updateUserFormContent.style.display = '';
+
+  const user = await api('get', `/users/${id}`);
+
+
+  updateUserForm.querySelector('#inputNombre').value = user.nombre;
+  updateUserForm.querySelector('#inputApellido').value = user.apellido;
+  updateUserForm.querySelector('#inputTarea').value = user.tarea;
+  updateUserForm.querySelector('#inputDescripcion').value = user.descripcion;
+}
+
+async function saveUpdateUser() {
+  const nombre = updateUserForm.querySelector('#inputNombre').value;
+  const apellido = updateUserForm.querySelector('#inputApellido').value;
+
+  await api('put', `/users/$(localStorage.getItem('token')`, {
+    nombre,
+    apellido,
+    tarea,
+    descripcion,
+  });
+cancelUpdate();
+  loadTable();
+}
+  */
