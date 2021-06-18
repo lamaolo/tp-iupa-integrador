@@ -62,7 +62,9 @@ list.appendChild(row);
  async function loadTable() {
   if (localStorage.getItem('token')) {
     list.innerHTML = '';
+    //const data = await api('get', '/users');
     const data = await api('get', '/users');
+
     data.forEach(({ nombre, tarea, tarea_Id, descripcion }) => addRow(nombre, tarea, tarea_Id, descripcion));
   }
  }
@@ -74,3 +76,14 @@ async function initApp() {
 
 
 
+///Crear usuario - api/users
+/* 
+ async function createUser() {
+  const nombre = inputName.value;
+
+  resetFormErrors();
+
+  const response = await api('post', '/users', {
+    nombre,
+  });
+*/
