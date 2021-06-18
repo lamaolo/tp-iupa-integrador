@@ -1,0 +1,8 @@
+const { body } = require('express-validator');
+
+module.exports = body('nombre')
+  .notEmpty()
+  .withMessage('Campo obligatorio')
+  .bail()
+  .isInt()
+  .withMessage('Escriba su nombre');
