@@ -19,13 +19,18 @@ if (process.env.NODE_ENV === "production") {
 
 // resto de configuracion
 const express = require("express");
-const bodyParser = require("body-parser");
+
+/*deprecate
+const bodyParser = require("body-parser");*/
 const apiRouter = require("./src");
 const db = require("./src/database");
+const { deprecate } = require("util");
 
 const app = express();
 
-app.use(bodyParser.json());
+//app.use(Body-Parser.json());
+
+app.use(express.json());
 app.use(apiRouter);
 
 (async function initApp() {
